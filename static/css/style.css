@@ -1,0 +1,33 @@
+body{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#website_logo{
+    height: 15vh; 
+    border-radius: 50%; 
+    width: 16vh;
+}
+
+.no-margin {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.bg-color{
+    background-color: rgb(29, 162, 215);
+}
+
+.login-fields{
+    background-color: rgb(232, 229, 229);
+    border: none;
+}
+
+.btn-color{
+    background-color: rgb(29, 162, 215);
+    color: white;
+}
+
+.btn-color:hover{
+    background-color: rgb(97, 183, 217);
+    color: white;
+}

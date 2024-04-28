@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health</title>
+
+    {% include 'home/head.html' %}
+    <body>
+    {% include 'customer/menu.html' %}
+    {% include 'customer/navbar.html' %}
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-5">
+                <div class="row">
+                    <div class="col-6">
+                        <!-- Start and stop buttons -->
+                        <button id="start_button" class="btn btn-primary btn-block">Start</button>
+                        <button id="stop_button" class="btn btn-danger btn-block">Show Emotion</button>
+                    </div>
+                    <div class="col-6">
+                        <!-- Video feed -->
+                        <img id="video_feed" src="" class="img-fluid" />
+                        <h1 id="emotion" class="mt-3"></h1>
+                    </div>
+                </div>
+            </div><h1>Emotion Detected: {{ emotion_detected }}</h1>
+
+            {% if emotion_detected == 'sad' %}
+            <div class="col-12 mt-5" id="movies_section">
+                <div class="container">
+                    <h1>Please Watch the below Movies</h1>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Movie Type</th>
+                                <th>Movie Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for movie in movies %}
+                                <tr>
+                                    <td>{{ movie.id }}</td>
+                                    <td>{{ movie.movieType }}</td>
+                                    <td>{{ movie.movieName }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if emotion_detected == 'neutral' %}
+            <div class="col-12 mt-5" id="interests_section" >
+                <div class="container">
+                    <h1>Here are your Intrests, Please follow your Intrests</h1>
+                    <br>
+                    <h1>{{intrests}}</h1>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if emotion_detected == 'angry' %}
+            <div class="col-12 mt-5" id="angry_section" >
+                <div class="container">
+                    <h1>Here are your favourite sports and places, Please visit or play</h1>
+                    <br>
+                    <h1>{{angry}}</h1>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if emotion_detected == 'happy' %}
+            <div class="col-12 mt-5" id="happy_section" >
+                <div class="container">
+                    <h1 style="color: green;">Please continue the happiness to improve Mental Health</h1>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get references to start and stop buttons
+            const startButton = document.getElementById("start_button");
+            const stopButton = document.getElementById("stop_button");
+    
+            // Add event listeners to start and stop buttons
+            startButton.addEventListener("click", function() {
+                // Set the source of the video feed to start streaming
+                document.getElementById("video_feed").src = "{% url 'video_feed' %}";
+            });
+    
+            stopButton.addEventListener("click", function() {
+    // Set the source of the video feed to stop streaming
+    document.getElementById("video_feed").src = "";
+    
+    // Fetch session data
+    fetch('/get_session_data/')
+        .then(response => response.json())
+        .then(data => {
+            console.log("Session data:", data); // Log the session data
+            window.location='/showAsstiant/'+data.emotion_detected;
+            // Update HTML content with session data
+            // document.getElementById('emotion').innerText = "As you are "+data.emotion_detected;
+            
+            // // Check if the emotion detected is 'sad'
+            // if (data.emotion_detected === "sad") {
+            //     // If 'sad', show the table
+            //     document.getElementById('movies_section').style.display = 'block';
+            // } else {
+            //     // If not 'sad', keep the table hidden
+            //     document.getElementById('movies_section').style.display = 'none';
+            // }
+
+            // // Check if the emotion detected is 'nutral'
+            // if (data.emotion_detected === "neutral") {
+                
+            //     document.getElementById('interests_section').style.display = 'block';
+            // } else {
+            //     document.getElementById('interests_section').style.display = 'none';
+            // }
+
+            // // Check if the emotion detected is 'happy'
+            // if (data.emotion_detected === "happy") {
+            //     document.getElementById('happy_section').style.display = 'block';
+            // } else {
+            //     document.getElementById('happy_section').style.display = 'none';
+            // }
+        })
+        .catch(error => console.error('Error fetching session data:', error));
+});
+
+        });
+    </script>
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

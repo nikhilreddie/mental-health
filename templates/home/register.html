@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    {% include 'includes.html' %}
+	<body>
+		{% include 'home/menu.html' %}
+    
+        <div class="container card">
+            <h3 class="text-center mt-4 text-primary">Create Account</h3>
+            <form action="{% url 'register' %}" method="post">
+                {% csrf_token %}
+                <div class="row mt-5">
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label for="first_name" class="form-label">First Name:</label>
+                            <input type="text" class="form-control" id="first_name" name="first_name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="last_name" class="form-label">Last Name:</label>
+                            <input type="text" class="form-control" id="last_name" name="last_name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="mobile" class="form-label">Mobile:</label>
+                            <input type="number" class="form-control" id="mobile" name="mobile" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Address:</label>
+                            <input type="text" class="form-control" id="address" name="address" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="city" class="form-label">City:</label>
+                            <select class="form-select" id="city" name="city">
+                                <option>New York City</option>
+                                <option>Buffalo</option>
+                                <option>Rochester</option>
+                                <option>Yonkers</option>
+                                <option>Albany</option>
+                                <option>New Rochelle</option>
+                                <option>Mount Vernon</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="dob" class="form-label">DOB:</label>
+                            <input type="date" class="form-control" id="dob" name="dob" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password:</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="re_password" class="form-label">Re-Enter Password:</label>
+                            <input type="password" class="form-control" id="re_password" name="re_password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="goal" class="form-label">Goal:</label>
+                            <select class="form-select" id="goal" name="goal">
+                                <option>angry</option>
+                                <option>happy</option>
+                                <option>neutral</option>
+                                <option>sad</option>
+                            </select>
+                        </div>
+                       
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label class="form-label">Film genres you would like:</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="horror" id="horror">
+                                <label class="form-check-label" for="horror">horror</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="action" id="action">
+                                <label class="form-check-label" for="action">action</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="sciencefiction" id="sciencefiction">
+                                <label class="form-check-label" for="sciencefiction">sciencefiction</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="thriller" id="thriller">
+                                <label class="form-check-label" for="thriller">thriller</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="comedy" id="comedy">
+                                <label class="form-check-label" for="comedy">comedy</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="romance" id="romance">
+                                <label class="form-check-label" for="romance">romance</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Your favourite sports and places:</label>
+                            <textarea class="form-control" name="favourite_sports_and_places" id="favourite_sports_and_places" rows="5" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Type Your interests:</label>
+                            <textarea class="form-control" name="intrests" id="interests" rows="5" required></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <button class="form-control btn btn-primary" type="submit">CREATE ACCOUNT</button>
+                            <BR>
+                            
+                        </div>
+
+                        <div class="col-sm-3">
+                           
+                            <a class="form-control btn btn-warning" href="{% url 'register' %}">Clear</a>
+                            <BR>
+                        </div>
+                        <br>
+                    </div>
+
+                    </div>
+                </div>
+            </form>
+          
+        </div>
+        <br><br><br><br>
+</body>
+</html>

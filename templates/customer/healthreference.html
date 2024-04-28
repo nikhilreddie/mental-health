@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health</title>
+
+    {% include 'home/head.html' %}
+	<body>
+    {% include 'customer/menu.html' %}
+    {% include 'customer/navbar.html' %}
+<!-- Filter Dropdown -->
+<div class="container mt-3">
+  <label for="filter">Filter Content:</label>
+  <select id="filter" onchange="filterContent()">
+      <option value="default">Select Filter</option>
+      <option value="anger">Anger</option>
+      <option value="sad">Sad</option>
+  </select>
+</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 mt-5">
+                <div class="container mt-5">
+                    <div class="card">
+                      <div class="card-header">
+                        <h5 class="card-title">Anger</h5>
+                      </div>
+                      <div class="card-body">
+                        <iframe src="https://www.healthline.com/health/anger-issues" style="width:100%; height:500px;"></iframe>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-6 mt-5">
+                <div class="container mt-5">
+                    <div class="card">
+                      <div class="card-header">
+                        <h5 class="card-title">Sad</h5>
+                      </div>
+                      <div class="card-body">
+                        <iframe src="https://www.psychiatry.org/patients-families/seasonal-affective-disorder" style="width:100%; height:500px;"></iframe>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-6 mt-5">
+                <div class="container mt-5">
+                    <div class="card">
+                      <div class="card-header">
+                        <h5 class="card-title">Content from medicalnewstoday.com</h5>
+                      </div>
+                      <div class="card-body">
+                        <iframe src="https://www.medicalnewstoday.com/articles/mental-health-resources" style="width:100%; height:500px;"></iframe>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-6 mt-5">
+                <div class="container mt-5">
+                    <div class="card">
+                      <div class="card-header">
+                        <h5 class="card-title">Content from ourworldindata.org</h5>
+                      </div>
+                      <div class="card-body">
+                        <iframe src="https://ourworldindata.org/mental-health" style="width:100%; height:500px;"></iframe>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+      // Function to filter content based on selected options
+      function filterContent() {
+          var selectedOption = document.getElementById("filter").value;
+          var cards = document.querySelectorAll(".card");
+  
+          // Hide all cards initially
+          for (var i = 0; i < cards.length; i++) {
+              cards[i].style.display = "none";
+          }
+  
+          // Show the first card containing content related to the selected option
+          for (var i = 0; i < cards.length; i++) {
+              var cardTitle = cards[i].querySelector(".card-title").textContent.toLowerCase();
+              if(selectedOption=="default"){
+                cards[i].style.display = "block";
+              }
+              if (cardTitle.includes(selectedOption)) {
+                  cards[i].style.display = "block";
+                  return; // Exit the loop after showing the first matching card
+              }
+          }
+      }
+  </script>
+  
+  
+
+    
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health</title>
+
+    {% include 'home/head.html' %}
+	<body>
+    {% include 'customer/menu.html' %}
+   
+    {% include 'customer/navbar.html' %}
+    <div class="container">
+        <div class="row">
+            <div class="col-6 mt-5">
+                <b>NAME</b>: {{custom.first_name}} {{custom.last_name}}<br>
+                <b>MOBILE</b>: {{custom.mobile}} <br>
+                <b>ADDRESS</b>: {{custom.address}} <br>
+                <b>DOB</b>: {{custom.date_of_birth}} <br>
+                <b>EMAIL</b>: {{custom.email}} <br>
+                <b>Goal</b>: {{custom.goal}} <br>
+                <b>PASSWORD</b>: ********* <br>
+                <b>YOUR INTRESTS:</b> <br>
+                {{custom.intrests}} <br>
+                <a class="btn btn-primary mt-3" href="edituser/{{custom.id}}">UPDATE</a>
+                <button class="btn btn-primary mt-3">BACK</button>
+            </div>
+            <div class="col-5 mt-5">
+                <b>USER SINCE: {{request.user.date_joined}}</b>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

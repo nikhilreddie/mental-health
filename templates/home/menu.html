@@ -1,0 +1,35 @@
+{% load static %}
+<header class="site-header  py-1 bg-info">
+    <nav class="navbar navbar-expand-lg navbar-dark p-3 " id="mainNav">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="{% static 'images/website_logo.jpg' %}" style="margin-left: 4rem;width:80px;height:80px" class="img img-sm img-fluid rounded-circle">
+            <span style="font-size: 40px;color:red">Mental Health </span> <span  style="color:#786DEE;font-size: 40px">Assistance </span>
+
+          </a>
+          <button class="navbar-toggler"  style="background-color: rgb(7, 7, 8);" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto ">
+              <li class="nav-item">
+                <a class="nav-link mx-2 active" aria-current="page" href="/index/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-2 active" aria-current="page" href="#about">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-2" href="#contact">Contact</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-2" href="/login/">Login</a>
+              </li>
+             
+              
+             
+            </ul>
+          </div>
+        </div>
+      </nav>
+</header>

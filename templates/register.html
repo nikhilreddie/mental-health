@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    {% load static %}
+    {% include 'includes.html' %}
+</head>
+<body>
+    <div class="container-fluid bg-color d-flex justify-content-center align-items-center">
+        <div class="row">
+            <div class="col-3">
+                <img class="img-fluid mt-2 mb-3" src="{% static 'images/website_logo.jpg' %}" alt="Website Logo" id="website_logo">
+            </div>
+            <div class="col-9">
+                <h2 class="text-white mt-5" style="white-space: nowrap;">MENTAL HEALTH ASSISTANCE</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+            <h3 class="text-center mt-4">Create Account</h3>
+            <form action="{% url 'register' %}" method="post">
+                {% csrf_token %}
+                <div class="row mt-5">
+                    <div class="col-xl-2 col-lg-3 offset-xl-2 col-6">
+                        <p>First Name:</p>
+                        <p>Last Name:</p>
+                        <p>Mobile:</p>
+                        <p>Address:</p>
+                        <p>City:</p>
+                        <p>DOB:</p>
+                        <p>Email:</p>
+                        <p>Password:</p>
+                        <p>Re-Enter Password:</p> 
+                        <button class="btn btn-primary mt-5" type="submit">Submit</button>
+                        <a class="btn btn-primary mt-5" href="{% url 'register' %}">Clear</a>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-6">
+                        <input class="mb-3 login-fields" type="text" id="first_name" name="first_name" required><br>
+                        <input class="mb-3 login-fields" type="text" id="last_name" name="last_name" required><br>
+                        <input class="mb-3 login-fields" type="number" id="mobile" name="mobile" required><br>
+                        <input class="mb-3 login-fields" type="text" id="address" name="address" required><br>
+                        
+<select class='mb-3 ' name='city' id='city'>
+    <option>New York City</option>
+    <option>Buffalo</option>
+    <option>Rochester</option>
+    <option>Yonkers</option>
+    <option>Albany</option>
+    <option>New Rochelle</option>
+    <option>Mount Vernon</option>
+</select><br>
+                        <input class="mb-3 login-fields" type="date" id="dob" name="dob" required><br>
+                        <input class="mb-3 login-fields" type="email" id="email" name="email" required><br>
+                        <input class="mb-3 login-fields" type="password" id="password" name="password" required><br>
+                        <input class="mb-3 login-fields" type="password" id="re_password" name="re_password" required><br>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <p>Film genres you would like:</p> 
+                        <input type="checkbox" name="horror" id="horror"> horror
+                        <input type="checkbox" name="action" id="action"> action
+                        <input type="checkbox" name="sciencefiction" id="sciencefiction"> sciencefiction <br>
+                        <input type="checkbox" name="thriller" id="thriller"> thriller
+                        <input type="checkbox" name="comedy" id="comedy"> comedy
+                        <input type="checkbox" name="romance" id="romance"> romance <br>
+                        <p class="mt-3">Your favourite sports and places:</p>
+                        <textarea name="favourite_sports_and_places" id="favourite_sports_and_places" cols="30" rows="5"></textarea>
+                        <p class="mt-3">Type Your intrests:</p>
+                        <textarea name="intrests" id="intrests" cols="30" rows="5"></textarea>
+                    </div>
+                </div>
+            </form>
+    </div>
+</body>
+</html>

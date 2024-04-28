@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health</title>
+
+    {% include 'home/head.html' %}
+	<body>
+    {% include 'customer/menu.html' %}
+    {% include 'customer/navbar.html' %}
+    <div class="container mt-4">
+        <h2>Doctors near by...</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Doctor ID</th>
+                    <th>Doctor Name</th>
+                    <th>Address</th>
+                    <th>Hospital Name</th>
+                    <th>Description</th>
+                    <th>Mobile Number</th>
+                    <th>City</th>
+                    <th>State</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for doctor in doctors %}
+                <tr>
+                    <td>{{ doctor.doctorId }}</td>
+                    <td>{{ doctor.doctorName }}</td>
+                    <td>{{ doctor.address }}</td>
+                    <td>{{ doctor.hospitalName }}</td>
+                    <td>{{ doctor.description }}</td>
+                    <td>{{ doctor.mobileNumber }}</td>
+                    <td>{{ doctor.city }}</td>
+                    <td>{{ doctor.state }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
